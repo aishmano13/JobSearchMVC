@@ -1,0 +1,111 @@
+﻿@model MVCPROJECT.Models.SearchJob
+@{
+    ViewBag.Title = "JobSearch_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>JobSearch_Pageload</h2>
+<h2>Searchjob</h2>
+<div>
+    @using (Html.BeginForm("JobSearch_Click", "JobSearch", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td><label>JobName:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.jname)</td>
+
+                <td><label>Skills:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.rskills)</td>
+                <td><input type="submit" value="Search" /></td>
+            </tr>
+        </table>    
+        }
+</div>
+<div>
+   @using (Html.BeginForm("JobSearch_Pageload", "JobSearch", FormMethod.Get))
+   {
+        if (Model != null)
+          {
+         if (Model.selectjob != null && Model.selectjob.Count != 0)
+            {
+                    <table class="table">
+                        <tr>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jdescription)
+                       </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.salary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.rskills)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.qualification)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jvacancy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jstatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.Edate)
+                        </th>
+                        <th>
+                           @Html.DisplayNameFor(m=>m.insertse.LApplydate)
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.selectjob)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jdescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.salary)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelitem => item.rskills)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.qualification)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jvacancy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jstatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Edate)
+                           </td>
+                            <td>
+                                @Html.DisplayFor(modelitem=> item.LApplydate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Apply now", "JobApply_Pageload", "ApplyJob", new { cid = item.cmpnyid, jid = item.jobid }, null)
+                            </td>
+                        </tr>
+                     }
+                </table> 
+                }
+               else
+               {
+                <script>alert('no matching jobs found');</script>                   
+                }
+                }
+           }
+    <div>
+        @Html.ActionLink("back to Home", "JobSearch_Pageload", "JobSearch")
+    </div>
+</div>
+
+
+
+

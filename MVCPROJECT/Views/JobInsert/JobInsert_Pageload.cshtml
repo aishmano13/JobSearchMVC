@@ -1,0 +1,78 @@
+﻿@model MVCPROJECT.Models.JobInsert
+@{
+    ViewBag.Title = "JobInsert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Insert</h2>
+@using (Html.BeginForm("JobInsert_Click", "JobInsert", FormMethod.Post))
+{
+    <div>
+        <label>JobName</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m =>m.jname )
+    </div>
+
+    <div>
+        <label>Description</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.jdescription)
+    </div>
+
+    <div>
+        <label>Salary</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.salary)
+    </div>
+
+    <div>
+        <label>Required Skills</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.rskills)
+    </div>
+    <div>
+        <label>Qualification</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.qualification)
+    </div>
+    <div>
+        <label>Job Vacancy</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.jvacancy)
+    </div>
+    <div>
+        <label>Job Status</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.jstatus)
+    </div>
+
+    <div>
+        <label>Entry-Date</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Edate)
+    </div>
+
+    <div>
+        <label>LastApply-Date</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.LApplydate)
+    </div>
+    <div>
+        <input type="submit" value="Insert" />
+        @Html.DisplayFor(m => m.msg)
+    </div>
+    <div>
+      <ul>
+      <li>@Html.ActionLink("Back to Home", "Company_HomePage", "LoginInsert")</li>
+      </ul>
+    </div>
+}
